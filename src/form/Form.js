@@ -20,11 +20,22 @@ class ActivityForm extends Component {
   }
 
   requestActivity = (event) => {
-    const activity = {
+    const activityParticipants = {
       participants: this.state.participants,
+    }
+    const activityType = {
       type: this.state.type,
     }
-    this.props.searchActivity(activity);
+    if(!activityParticipants) {
+      this.props.searchActivity(activityType)
+    }
+    if(!activityType) {
+      this.props.searchActivity(activityParticipants)
+    }
+    if(!activityType && !activityParticipants) {
+      this.props.getRandomActivity()
+    }
+
     this.clearInputs();
   }
 
@@ -32,7 +43,7 @@ class ActivityForm extends Component {
     const { participants, type } = this.state;
     return (
       <form className="activity-search" title="activity-search">
-        <h2>Search by Participants OR Type</h2>
+        <h2>Find a Random Activity by Number of Participants OR Type</h2>
         <label htmlFor="particpants" className="particpants-label">
           Participants
         </label>

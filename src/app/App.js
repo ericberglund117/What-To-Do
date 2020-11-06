@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Header from '../header/Header';
 import ActivityForm from '../form/Form';
-import { getActivity } from '../apiCalls';
+import { getActivity, getActivityParticipants, getActivityType } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -17,7 +17,7 @@ class App extends Component {
     this.setState({ activityCards: [...this.state.activityCards, activity] })
   }
 
-  componentDidMount = () => {
+  getRandomActivity = () => {
     getActivity()
     .then(data => this.setState({ activityCards: data }))
     .catch(error => this.setState({ error: error.message }))
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <ActivityForm searchActivity={this.searchActivity}/>
+        <ActivityForm getRandomActivity={this.getRandomActivity}/>
       </div>
     );
   }
