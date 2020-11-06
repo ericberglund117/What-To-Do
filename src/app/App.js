@@ -16,11 +16,15 @@ class App extends Component {
     this.setState({ activityCards: [...this.state.activityCards, activity] })
   }
 
+  componentDidMount = () => {
+    
+  }
+
   render() {
     return (
       <div>
         <Header />
-        <ActivityForm />
+        <ActivityForm searchActivity={this.searchActivity}/>
       </div>
     );
   }

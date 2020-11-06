@@ -40,7 +40,7 @@ class ActivityForm extends Component {
           type="text"
           className="particpants-input"
           placeholder="Number of Participants"
-          name="particpants"
+          name="participants"
           value={participants}
           onChange={ event => this.handleChange(event) }
         />
