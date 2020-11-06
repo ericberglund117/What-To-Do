@@ -35,7 +35,6 @@ class ActivityForm extends Component {
     if(!activityType && !activityParticipants) {
       this.props.getRandomActivity()
     }
-
     this.clearInputs();
   }
 

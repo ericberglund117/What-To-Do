@@ -23,6 +23,18 @@ class App extends Component {
     .catch(error => this.setState({ error: error.message }))
   }
 
+  getActivityByParticipants = (participants) => {
+    getActivityParticipants(participants)
+    .then(data => this.setState({ activityCards: data }))
+    .catch(error => this.setState({ error: error.message }))
+  }
+
+  getActivityByType = (type) => {
+    getActivityType(type)
+    .then(data => this.setState({ activityCards: data }))
+    .catch(error => this.setState({ error: error.message }))
+  }
+
   render() {
     return (
       <div>
