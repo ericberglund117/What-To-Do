@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <ActivityForm getRandomActivity={this.getRandomActivity}/>
+        <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType}/>
       </div>
     );
   }

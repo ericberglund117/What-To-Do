@@ -27,10 +27,10 @@ class ActivityForm extends Component {
       type: this.state.type,
     }
     if(!activityParticipants) {
-      this.props.searchActivity(activityType)
+      this.props.getActivityType(activityType)
     }
     if(!activityType) {
-      this.props.searchActivity(activityParticipants)
+      this.props.getActivityParticipants(activityParticipants)
     }
     if(!activityType && !activityParticipants) {
       this.props.getRandomActivity()
