@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Header from '../header/Header';
 import ActivityForm from '../form/Form';
+import { getActivity } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,9 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    
+    getActivity()
+    .then(data => this.setState({ activityCards: data }))
+    .catch(error => this.setState({ error: error.message }))
   }
 
   render() {
