@@ -5,7 +5,7 @@ class ActivityForm extends Component {
   constructor() {
     super()
     this.state = {
-      participants: '',
+      participants: 0,
       type: ''
     }
   }
@@ -16,23 +16,22 @@ class ActivityForm extends Component {
   }
 
   clearInputs = () => {
-    this.setState({ participants: '', type:'' })
+    this.setState({ participants: '', type: '' })
   }
 
   requestActivity = (event) => {
-    const activityParticipants = {
-      participants: this.state.participants,
-    }
-    const activityType = {
-      type: this.state.type,
-    }
-    if(!activityParticipants) {
+    const activityParticipants = this.state.participants
+    const activityType = this.state.type
+
+    if(activityType !== '') {
+      console.log(activityType)
       this.props.getActivityType(activityType)
     }
-    if(!activityType) {
-      this.props.getActivityParticipants(activityParticipants)
+    if(activityParticipants > 0) {
+      console.log(activityParticipants)
+      this.props.getActivityParticipants(parseInt(activityParticipants))
     }
-    if(!activityType && !activityParticipants) {
+    if(!activityType && activityParticipants === 0) {
       this.props.getRandomActivity()
     }
     this.clearInputs();
@@ -42,18 +41,27 @@ class ActivityForm extends Component {
     const { participants, type } = this.state;
     return (
       <form className="activity-search" title="activity-search">
+        <h2>Need a Distraction From Quarantine and/or The Election?</h2>
         <h2>Find a Random Activity by Number of Participants OR Type</h2>
         <label htmlFor="particpants" className="particpants-label">
           Participants
         </label>
-        <input
-          type="text"
-          className="particpants-input"
-          placeholder="Number of Participants"
+        <select id="participants-numbers"
           name="participants"
-          value={participants}
-          onChange={ event => this.handleChange(event) }
-        />
+          defaultValue={this.state.particpants}
+          onChange={event => this.handleChange(event)}>
+          <option value={0}>0</option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
+          <option value={6}>6</option>
+          <option value={7}>7</option>
+          <option value={8}>8</option>
+          <option value={9}>9</option>
+          <option value={10}>10</option>
+        </select>
         <label htmlFor="type" className="type-label">
           Type
         </label>

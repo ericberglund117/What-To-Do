@@ -13,10 +13,6 @@ class App extends Component {
     }
   }
 
-  searchActivity = (activity) => {
-    this.setState({ activityCards: [...this.state.activityCards, activity] })
-  }
-
   getRandomActivity = () => {
     getActivity()
     .then(data => this.setState({ activityCards: data }))
