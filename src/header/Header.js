@@ -8,6 +8,7 @@ const Header = () => {
       <section className='background' title='background'>
         <h1>What To Do?</h1>
         <img alt='michael-logo' src={MichaelScott} />
+        <h2>POSSIBILITIES</h2>
       </section>
     </section>
   )
