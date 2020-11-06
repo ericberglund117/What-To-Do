@@ -1,9 +1,21 @@
 import './App.css';
+import React, { Component } from 'react';
+import Header from '../header/Header';
 
-function App() {
-  return (
-    <h1>What To Do?</h1>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      activityCards: [],
+      error: ''
+    }
+  }
+
+  render() {
+    return (
+      <Header />
+    );
+  }
 }
 
 export default App;
