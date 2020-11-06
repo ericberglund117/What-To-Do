@@ -3,7 +3,6 @@
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  position: absolute;
   width: 100%;
   background: url(https://static1.squarespace.com/static/55c18d4de4b081fdca9d0256/t/59d28bf4c534a52e50039431/1506970617787/open+doors.jpg?format=1500w) no-repeat;
   background-size: 100% 100%;
@@ -19,12 +18,15 @@ h1 {
 
 h2 {
   font-family: 'Indie Flower', cursive;
+  font-size: 1rem;
   height: fit-content;
   position: relative;
-  left:418px;
+  left:420px;
   top: 30px;
 }
 
 img[alt='michael-logo'] {
   width: 17rem;
+  position: relative;
+  left: 100px;
 }
