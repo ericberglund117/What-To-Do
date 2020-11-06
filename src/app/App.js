@@ -1,6 +1,8 @@
 import './App.css';
 import React, { Component } from 'react';
 import Header from '../header/Header';
+import ActivityForm from '../form/Form';
+import { getActivity, getActivityParticipants, getActivityType } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -11,9 +13,30 @@ class App extends Component {
     }
   }
 
+  getRandomActivity = () => {
+    getActivity()
+    .then(data => this.setState({ activityCards: data }))
+    .catch(error => this.setState({ error: error.message }))
+  }
+
+  getActivityByParticipants = (participants) => {
+    getActivityParticipants(participants)
+    .then(data => this.setState({ activityCards: data }))
+    .catch(error => this.setState({ error: error.message }))
+  }
+
+  getActivityByType = (type) => {
+    getActivityType(type)
+    .then(data => this.setState({ activityCards: data }))
+    .catch(error => this.setState({ error: error.message }))
+  }
+
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType}/>
+      </div>
     );
   }
 }
