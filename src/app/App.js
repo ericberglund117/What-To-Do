@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Header from '../header/Header';
 import ActivityForm from '../form/Form';
 import ActivityArea from '../activityArea/ActivityArea'
+import ActivityCard from '../activityCard/ActivityCard'
+import { Route } from 'react-router-dom';
 import { getActivity, getActivityParticipants, getActivityType } from '../apiCalls';
 
 class App extends Component {
@@ -35,9 +37,17 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType} />
-        <ActivityArea activity={this.state.activityCards}/>
+      <Route>
+        <Route exact path='/'>
+          <Header />
+          <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType} />
+          <ActivityArea activity={this.state.activityCards}/>
+        </Route>
+        <Route path ='/:key' render = {({match}) =>{
+          const { key } = match.params
+          return <ActivityCard cardKey={key}/>
+        }}/>
+      </Route>
       </div>
     );
   }
