@@ -3,18 +3,22 @@ import './ActivityArea.css'
 
 const ActivityArea = (props) => {
   const { activity } = props
-  return (
-    activity.map(act => {
-      return (
+  const individualCard = activity.map(act => {
+    return (
       <section className="activity-card">
-        <h2>Activity</h2>
-        <h3>{act.activity}</h3>
-        <h3>Type: {act.type}</h3>
-        <h3>Participants: {act.participants}</h3>
-        <h3>Price: {act.price}</h3>
+      <h2>Activity</h2>
+      <h3>{act.activity}</h3>
+      <h3>Type: {act.type}</h3>
+      <h3>Participants: {act.participants}</h3>
+      <h3>Price: {act.price}</h3>
       </section>
-      )
-    })
+    )
+  })
+  return (
+    <section className="activity-area">
+      <h2>Activities List</h2>
+      {individualCard}
+    </section>
   );
 };
 
