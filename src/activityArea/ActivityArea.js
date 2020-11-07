@@ -15,7 +15,7 @@ const ActivityArea = (props) => {
       </section>
       )
     })
-  )
-}
+  );
+};
 
 export default ActivityArea;
