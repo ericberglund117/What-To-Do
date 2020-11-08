@@ -37,17 +37,17 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Route>
-        <Route exact path='/'>
-          <Header />
-          <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType} />
-          <ActivityArea activity={this.state.activityCards}/>
+        <Route>
+          <Route exact path='/'>
+            <Header />
+            <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType} />
+            <ActivityArea activities={this.state.activityCards}/>
+          </Route>
+          <Route path ='/:key' render = {({match}) =>{
+            const { key } = match.params
+            return <ActivityCard cardKey={key} activities={this.state.activityCards} />
+          }}/>
         </Route>
-        <Route path ='/:key' render = {({match}) =>{
-          const { key } = match.params
-          return <ActivityCard cardKey={key}/>
-        }}/>
-      </Route>
       </div>
     );
   }
