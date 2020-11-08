@@ -10,7 +10,6 @@ const ActivityCard = (props) => {
        <h3>Type: {activity.type}</h3>
        <h3>Participants: {activity.participants}</h3>
        <h3>Price: {activity.price}</h3>
-       <h3>Key: {activity.key}</h3>
       </section>
     )
   });

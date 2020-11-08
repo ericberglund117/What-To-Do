@@ -5,9 +5,9 @@ import './ActivityArea.css';
 
 const ActivityArea = (props) => {
   const { activities } = props
-  const individualCard = activities.map((activity, index) => {
+  const individualActivity = activities.map((activity, index) => {
     return (
-      <Link to={`/${activity.key}`} key={index} className='activity-card' title='activity-card'>
+      <Link to={`/activity/${activity.key}`} key={index} className='activity-card' title='activity-card'>
         <h2>{activity.activity}</h2>
       </Link>
     )
@@ -16,7 +16,7 @@ const ActivityArea = (props) => {
   return (
     <section className="activity-area">
       <h2>Activities List</h2>
-      {individualCard}
+      {individualActivity}
     </section>
   );
 };
