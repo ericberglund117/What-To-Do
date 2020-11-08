@@ -1,23 +1,22 @@
 import React from 'react';
-import './ActivityArea.css'
+import ActivityCard from '../activityCard/ActivityCard';
+import { Link } from 'react-router-dom';
+import './ActivityArea.css';
 
 const ActivityArea = (props) => {
-  const { activity } = props
-  const individualCard = activity.map(act => {
+  const { activities } = props
+  const individualActivity = activities.map((activity, index) => {
     return (
-      <section className="activity-card">
-      <h2>Activity</h2>
-      <h3>{act.activity}</h3>
-      <h3>Type: {act.type}</h3>
-      <h3>Participants: {act.participants}</h3>
-      <h3>Price: {act.price}</h3>
-      </section>
+      <Link to={`/activity/${activity.key}`} key={index} className='activity-card' title='activity-card'>
+        <h2>{activity.activity}</h2>
+      </Link>
     )
   })
+
   return (
     <section className="activity-area">
       <h2>Activities List</h2>
-      {individualCard}
+      {individualActivity}
     </section>
   );
 };
