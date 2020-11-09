@@ -43,7 +43,7 @@ class App extends Component {
             <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType} />
             <ActivityArea activities={this.state.activityCards}/>
           </Route>
-          <Route path ='/activity/:key' render = {({match}) =>{
+          <Route path ='/activity/:key' render = {({match}) => {
             const { key } = match.params
             return <ActivityCard cardKey={key} activities={this.state.activityCards} />
           }}/>
