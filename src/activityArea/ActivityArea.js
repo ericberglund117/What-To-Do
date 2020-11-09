@@ -8,7 +8,7 @@ const ActivityArea = (props) => {
   const individualActivity = activities.map((activity, index) => {
     return (
       <Link to={`/activity/${activity.key}`} key={activity.key} title='activity-name'>
-        <h2 className="activity-idea">{activity.activity}</h2>
+        <h2 className="activity-idea" title="activity-idea" key={index}>{activity.activity}</h2>
       </Link>
     )
   })

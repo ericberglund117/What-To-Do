@@ -58,6 +58,5 @@ describe('ActivityForm', () => {
 
     userEvent.type(typeInput, 'social')
     expect(typeInput).toHaveValue('social')
-  })
-
+  });
 });
