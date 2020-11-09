@@ -27,4 +27,12 @@ describe('ActivityForm', () => {
     const typeInput = screen.getByPlaceholderText('Activity Type')
     expect(typeInput).toBeInTheDocument();
   });
+
+  it('should render a submit button', () => {
+    render(<ActivityForm />)
+
+    const submitButton = screen.getByRole('button', { name: /search activities/i })
+    expect(submitButton).toBeInTheDocument();
+  });
+
 });
