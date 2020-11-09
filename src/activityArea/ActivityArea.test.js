@@ -15,7 +15,11 @@ describe('ActivityArea', () => {
       accessibility: 0.2
     }];
 
-    render(<MemoryRouter><ActivityArea activities={activity}/></MemoryRouter>)
+    render(
+      <MemoryRouter>
+        <ActivityArea activities={activity}/>
+      </MemoryRouter>
+    )
 
     const header = screen.getByText('Activities List');
     expect(header).toBeInTheDocument();
