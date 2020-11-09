@@ -12,5 +12,19 @@ describe('ActivityForm', () => {
 
     expect(header1).toBeInTheDocument();
     expect(header2).toBeInTheDocument();
-  })
-})
+  });
+
+  it('should render a participants search input', () => {
+    render(<ActivityForm />)
+
+    const participantsInput = screen.getByRole('combobox')
+    expect(participantsInput).toBeInTheDocument();
+  });
+
+  it('should render a type search input', () => {
+    render(<ActivityForm />)
+
+    const typeInput = screen.getByPlaceholderText('Activity Type')
+    expect(typeInput).toBeInTheDocument();
+  });
+});

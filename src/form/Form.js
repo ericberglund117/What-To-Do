@@ -44,7 +44,7 @@ class ActivityForm extends Component {
       <form className="activity-search" title="activity-search">
         <h2>Need a Distraction From Quarantine and/or The Election?</h2>
         <h2>Find a Random Activity by Number of Participants OR Type</h2>
-        <label htmlFor="particpants" className="particpants-label">
+        <label htmlFor="particpants" className="participants-label">
           Participants
         </label>
         <select id="participants-numbers"
