@@ -1,0 +1,14 @@
+.activity-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4ebd9;
+}
+
+.activities-list {
+  text-decoration: underline;
+}
+
+a:link {
+  text-decoration: none;
+}

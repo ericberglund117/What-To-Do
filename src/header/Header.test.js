@@ -19,14 +19,6 @@ describe('Header', () => {
     expect(title).toBeInTheDocument();
   });
 
-  it('should render a subtitle', () => {
-    render(<Header />);
-
-    const subtitle = screen.getByText("Open to possibilities");
-
-    expect(subtitle).toBeInTheDocument();
-  });
-
   it('should render a logo', () => {
   render(<Header />);
 

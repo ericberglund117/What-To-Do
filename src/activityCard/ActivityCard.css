@@ -1,0 +1,37 @@
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  border: groove;
+  border-radius: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 1rem;
+}
+
+.main-body {
+  background-color: #f4ebd9;
+  height: 100vh;
+}
+
+.act-card-section {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.act {
+  color: #1E5284;
+  margin: .25rem;
+  text-decoration: underline;
+}
+
+.act-name {
+  text-decoration: overline;
+  color: #3481B4;
+}
+
+h3 {
+  margin: .25rem;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5rem;
+}

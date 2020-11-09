@@ -1,0 +1,29 @@
+.activity-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4ebd9;
+}
+
+#participants-numbers {
+  width: min-content;
+}
+
+label {
+  margin: 0.5em;
+}
+
+.type-input {
+ width: max-content;
+}
+
+.search-activity {
+margin: 0.5em;
+width: fit-content;
+}
+
+h2 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5rem;
+  height: fit-content;
+}

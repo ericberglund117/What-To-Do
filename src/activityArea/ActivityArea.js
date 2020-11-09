@@ -7,15 +7,15 @@ const ActivityArea = (props) => {
   const { activities } = props
   const individualActivity = activities.map((activity, index) => {
     return (
-      <Link to={`/activity/${activity.key}`} key={index} className='activity-card' title='activity-card'>
-        <h2>{activity.activity}</h2>
+      <Link to={`/activity/${activity.key}`} key={activity.key} title='activity-name'>
+        <h2 className="activity-idea">{activity.activity}</h2>
       </Link>
     )
   })
 
   return (
     <section className="activity-area">
-      <h2>Activities List</h2>
+      <h2 className="activities-list">Activities List</h2>
       {individualActivity}
     </section>
   );

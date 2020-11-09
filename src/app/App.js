@@ -36,17 +36,19 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='main-body'>
         <Route>
           <Route exact path='/'>
             <Header />
             <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType} />
             <ActivityArea activities={this.state.activityCards}/>
           </Route>
-          <Route path ='/activity/:key' render = {({match}) =>{
+        <section className="act-card-section">
+          <Route path ='/activity/:key' render = {({match}) => {
             const { key } = match.params
             return <ActivityCard cardKey={key} activities={this.state.activityCards} />
           }}/>
+        </section>
         </Route>
       </div>
     );
