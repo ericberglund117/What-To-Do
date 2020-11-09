@@ -1,7 +1,8 @@
 import React from 'react';
 import ActivityForm from './Form';
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 
 describe('ActivityForm', () => {
   it('should render two headers', () => {
@@ -34,5 +35,19 @@ describe('ActivityForm', () => {
     const submitButton = screen.getByRole('button', { name: /search activities/i })
     expect(submitButton).toBeInTheDocument();
   });
+
+  it('should allow the user to choose a number of participants from the dropdown menu', () => {
+    render(<ActivityForm />)
+
+    const participantsInput = screen.getByRole('combobox');
+    expect(participantsInput).toBeInTheDocument();
+
+    const form = screen.getByTestId('activity-search');
+    expect(form).toHaveFormValues({ participants: '0' });
+
+    const participants = screen.getByLabelText('Participants')
+    userEvent.selectOptions(participants, '2');
+    expect(form).toHaveFormValues({ participants: '2' });
+  })
 
 });
