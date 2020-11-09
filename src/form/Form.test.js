@@ -48,6 +48,16 @@ describe('ActivityForm', () => {
     const participants = screen.getByLabelText('Participants')
     userEvent.selectOptions(participants, '2');
     expect(form).toHaveFormValues({ participants: '2' });
+  });
+
+  it('should allow the user to type in an activity input', () => {
+    render(<ActivityForm />)
+
+    const typeInput = screen.getByPlaceholderText('Activity Type')
+    expect(typeInput).toBeInTheDocument();
+
+    userEvent.type(typeInput, 'social')
+    expect(typeInput).toHaveValue('social')
   })
 
 });
