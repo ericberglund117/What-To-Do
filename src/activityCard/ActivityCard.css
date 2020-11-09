@@ -4,3 +4,8 @@
   width: fit-content;
   border: groove;
 }
+
+.main-body {
+  background-color: #f4ebd9;
+  height: 100vh;
+}
