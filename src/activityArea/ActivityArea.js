@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './ActivityArea.css';
 
 const ActivityArea = (props) => {
-  console.log(props)
   const { activities } = props
   const individualActivity = activities.map((activity, index) => {
     return (

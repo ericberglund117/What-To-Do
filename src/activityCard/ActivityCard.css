@@ -1,0 +1,6 @@
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  border: groove;
+}
