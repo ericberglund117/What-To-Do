@@ -1,5 +1,6 @@
 import React from 'react';
 import ActivityArea from './ActivityArea';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
 describe('ActivityArea', () => {
@@ -12,8 +13,9 @@ describe('ActivityArea', () => {
       link: "",
       key: "6081071",
       accessibility: 0.2
-    }]
-    render(<ActivityArea activity={activity}/>)
+    }];
+
+    render(<MemoryRouter><ActivityArea activities={activity}/></MemoryRouter>)
 
     const header = screen.getByText('Activities List');
     expect(header).toBeInTheDocument();
