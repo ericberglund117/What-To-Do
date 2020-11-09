@@ -25,11 +25,9 @@ class ActivityForm extends Component {
     const activityType = this.state.type
 
     if(activityType !== '') {
-      console.log(activityType)
       this.props.getActivityType(activityType)
     }
     if(activityParticipants > 0) {
-      console.log(activityParticipants)
       this.props.getActivityParticipants(parseInt(activityParticipants))
     }
     if(!activityType && activityParticipants === 0) {

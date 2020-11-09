@@ -20,18 +20,27 @@ const expectedActivity = [{
 
 const expectedParticipantsActivity = [{
     activity: "Play Settlers of Catan",
-    type: "social",
+    type: "recreational",
     participants: 3,
     price: 0.05,
     link: "",
-    key: "6081071",
+    key: "6081234",
+    accessibility: 0.2
+  }];
+
+const expectedTypeActivity = [{
+    activity: "Rent a sumosuit for a dinner party",
+    type: "social",
+    participants: 1,
+    price: 0.05,
+    link: "",
+    key: "6081782",
     accessibility: 0.2
   }];
 
 describe('App', () => {
   it('should be able to display a random activity when a user clicks the Search Activities button with no inputs filled out', async () => {
     getActivity.mockResolvedValueOnce(expectedActivity)
-    const mockRandomActivity = jest.fn()
 
     render(
       <MemoryRouter>
@@ -60,7 +69,6 @@ describe('App', () => {
 
   it('should be able to display a random activity when a user clicks the Search Activities button with participants input filled out', async () => {
     getActivityParticipants.mockResolvedValueOnce(expectedParticipantsActivity)
-    const mockRandomActivity = jest.fn()
 
     render(
       <MemoryRouter>
@@ -94,6 +102,40 @@ describe('App', () => {
       </MemoryRouter>
     )
     const activityName = screen.getByText("Play Settlers of Catan");
+    expect(activityName).toBeInTheDocument();
+  });
+
+  it('should be able to display a random activity when a user clicks the Search Activities button with type input filled out', async () => {
+    getActivityType.mockResolvedValueOnce(expectedTypeActivity)
+
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+
+    const activityArea = screen.getByText('Activities List')
+    expect(activityArea).toBeInTheDocument();
+
+    const typeInput = screen.getByPlaceholderText('Activity Type')
+    expect(typeInput).toBeInTheDocument();
+
+    userEvent.type(typeInput, 'social')
+    expect(typeInput).toHaveValue('social')
+
+    const submitButton = screen.getByRole('button', { name: /search activities/i })
+    userEvent.click(submitButton)
+    expect(getActivityType).toHaveBeenCalledTimes(1);
+
+    const receivedActivity = await waitFor(() => expectedTypeActivity)
+    expect(receivedActivity).toHaveLength(1)
+
+    render(
+      <MemoryRouter>
+        <ActivityArea activities={expectedTypeActivity} />
+      </MemoryRouter>
+    )
+    const activityName = screen.getByText("Rent a sumosuit for a dinner party");
     expect(activityName).toBeInTheDocument();
   })
 })
