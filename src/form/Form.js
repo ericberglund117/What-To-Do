@@ -81,6 +81,12 @@ class ActivityForm extends Component {
       </form>
     )
   }
-}
+};
+
+ActivityForm.propTypes = {
+  getRandomActivity: PropTypes.func,
+  getActivityParticipants: PropTypes.func,
+  getActivityType: PropTypes.func
+};
 
 export default ActivityForm;

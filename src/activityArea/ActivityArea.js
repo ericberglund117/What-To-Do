@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ActivityArea.css';
+import PropTypes from 'prop-types';
 
 const ActivityArea = (props) => {
   const { activities } = props
@@ -18,6 +19,10 @@ const ActivityArea = (props) => {
       {individualActivity.map(activity => <li key={activity.key}>{activity}</li>)}
     </section>
   );
+};
+
+ActivityArea.propTypes = {
+  activities: PropTypes.array.isRequired
 };
 
 export default ActivityArea;
