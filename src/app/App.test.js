@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, waitFor, screen, dispatchEvent } from '@testing-library/react';
 import App from './App';
-import ActivityArea from '../activityArea/ActivityArea'
-import { getActivity, getActivityParticipants, getActivityType } from '../apiCalls'
+import ActivityArea from '../activityArea/ActivityArea';
+import ActivityCard from '../activityCard/ActivityCard';
+import { getActivity, getActivityParticipants, getActivityType } from '../apiCalls';
 jest.mock('../apiCalls');
 
 const expectedActivity = [{
@@ -137,5 +138,50 @@ describe('App', () => {
     )
     const activityName = screen.getByText("Rent a sumosuit for a dinner party");
     expect(activityName).toBeInTheDocument();
+  });
+
+  it('should render an activityCard when a user clicks on an activity', async () => {
+    getActivity.mockResolvedValueOnce(expectedActivity)
+
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+
+    const activityArea = screen.getByText('Activities List')
+    expect(activityArea).toBeInTheDocument();
+
+    const submitButton = screen.getByRole('button', { name: /search activities/i })
+    userEvent.click(submitButton)
+    expect(getActivity).toHaveBeenCalledTimes(1);
+
+    const receivedActivity = await waitFor(() => expectedActivity)
+    expect(receivedActivity).toHaveLength(1)
+
+    render(
+      <MemoryRouter>
+        <ActivityArea activities={expectedActivity} />
+      </MemoryRouter>
+    )
+    const activityName = screen.getAllByRole('heading', { name: /activity\-idea/i })
+    expect(activityName[1]).toBeInTheDocument();
+    screen.debug()
+    const link = screen.getByText("Text a friend you haven't talked to in a long time")
+    expect(screen.getByText("Text a friend you haven't talked to in a long time").closest('a')).toHaveAttribute('href', "/activity/6081071")
+    userEvent.click(link)
+    const key = "6081071"
+
+    render(
+      <MemoryRouter initialEntries={[`/activity/${key}`]}>
+        <Route path='/activites/:key'>
+          <ActivityCard />
+        </Route>
+      </MemoryRouter>
+    );
+
+    expect(window.location.href).toBe("https://www.http://localhost:3000/activity/6081071");
+    //await waitFor(() => screen.getByText('Type: social'))
+
   })
 })

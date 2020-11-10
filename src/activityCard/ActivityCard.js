@@ -5,7 +5,7 @@ const ActivityCard = (props) => {
   const individualCard = props.activities.map((activity, index) => {
     if(props.cardKey === activity.key) {
       return (
-        <section className="activity-card" key={index}>
+        <section className="activity-card" key={index} data-testid ='activity-card'>
           <h2 className="act">Activity</h2>
           <h3 className="act-name">{activity.activity}</h3>
           <h3>Type: {activity.type}</h3>
