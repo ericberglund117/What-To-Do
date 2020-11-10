@@ -1,12 +1,20 @@
-# Getting Started with Create React App
+## About The Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created using [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This solo project is part of Turing Software and Designs' Front-End Program, Module 3. The project focuses on creating an original application using React. It implements ES6 syntax and Router into our React application. One database was accessed, representing a large chunk of data for random activities a user could do. The database is accessed with and without parameters. My task was to create an application that gave the user random activities to do during quarantine. Each activity contains a type, number of participants, price, and key (for verification). This program also incorporates the use of the React/Jest testing libraries.
 
-In the project directory, you can run:
+### Getting Started with Create React App
 
-### `npm start`
+### Installation Setup
+In your terminal:
+1. Clone the repo- git@github.com:ericberglund117/what-to-do.git
+
+2. Install NPM packages- `npm install`
+
+3. Start application- In the project directory, you can run:
+
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,57 +22,47 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* React
+* Router
+* React/Jest Testing libraries
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Homepage
+![homepage-view](src/images/homepage.png)
 
-### `npm run eject`
+#### Homepage with Activities
+![Homepage Activities](src/images/homepage-activities.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Activity card
+![activity-card](src/images/activity.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Roadmap
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The total time allotted for this project was approximately 5 days. Future features contemplated by the developer includes the following:
 
-## Learn More
+* Allowing a user to favorite their activities and then view their favorited activities on a different page.
+* Allow the user to comment on an activity card.
+* Allow the user to share their favorited activities with friends.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
 
-### Code Splitting
+ [Eric Berglund](https://github.com/ericberglund117)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Project Link: [What-To-Do Repo](https://github.com/ericberglund117/what-to-do)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Acknowledgements
 
-### Making a Progressive Web App
+Khalid Williams - This developer would like to thank Turing Module 3 instructor, Khalid Williams, for his assistance throughout this project and for his daily lessons on the magic of React.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Leta Keane - We would also like to thank Turing Module 3 instructor, Leta Keane, for her guidance and assistance on this project and the module in general.
