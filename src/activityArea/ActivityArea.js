@@ -1,5 +1,4 @@
 import React from 'react';
-import ActivityCard from '../activityCard/ActivityCard';
 import { Link } from 'react-router-dom';
 import './ActivityArea.css';
 

@@ -166,22 +166,19 @@ describe('App', () => {
     )
     const activityName = screen.getAllByRole('heading', { name: /activity\-idea/i })
     expect(activityName[1]).toBeInTheDocument();
-    screen.debug()
-    const link = screen.getByText("Text a friend you haven't talked to in a long time")
     expect(screen.getByText("Text a friend you haven't talked to in a long time").closest('a')).toHaveAttribute('href', "/activity/6081071")
+    const link = screen.getByText("Text a friend you haven't talked to in a long time")
     userEvent.click(link)
     const key = "6081071"
 
     render(
-      <MemoryRouter initialEntries={[`/activity/${key}`]}>
-        <Route path='/activites/:key'>
-          <ActivityCard />
-        </Route>
-      </MemoryRouter>
-    );
+      <MemoryRouter>
+        <ActivityCard cardKey={key} activities={expectedActivity}/>
+      </MemoryRouter>);
 
-    expect(window.location.href).toBe("https://www.http://localhost:3000/activity/6081071");
-    //await waitFor(() => screen.getByText('Type: social'))
-
+    await waitFor(() => screen.getByText('Type: social'))
+    await waitFor(() => screen.getByText('Participants: 2'))
+    await waitFor(() => screen.getByText('Price:$ 0.05'))
+    await waitFor(() => screen.getByText('Key: 6081071'))
   })
 })
