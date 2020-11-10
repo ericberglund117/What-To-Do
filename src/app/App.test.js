@@ -175,7 +175,7 @@ describe('App', () => {
     render(
       <MemoryRouter initialEntries={[`/activity/${key}`]}>
         <Route path='/activites/:key'>
-          <ActivityCard />
+          <ActivityCard activities={expectedActivity}/>
         </Route>
       </MemoryRouter>
     );

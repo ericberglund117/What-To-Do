@@ -1,5 +1,6 @@
 import React from 'react';
 import './ActivityCard.css';
+import PropTypes from 'prop-types';
 
 const ActivityCard = (props) => {
   const individualCard = props.activities.map((activity, index) => {
@@ -17,6 +18,11 @@ const ActivityCard = (props) => {
     }
   });
   return individualCard;
+};
+
+ActivityCard.propTypes = {
+  cardKey: PropTypes.string,
+  activities: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default ActivityCard;
