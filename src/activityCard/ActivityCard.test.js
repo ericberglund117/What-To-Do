@@ -10,7 +10,7 @@ describe('ActivityCard', () => {
       type: 'social',
       participants: 1,
       price: 0
-    }]
+    }];
 
     render(
       <MemoryRouter>
@@ -21,7 +21,7 @@ describe('ActivityCard', () => {
     const activityTitle = screen.getByText('join the circus')
     const activityType = screen.getByText('Type: social')
     const activityParticipants = screen.getByText('Participants: 1')
-    const activityPrice = screen.getByText('Price: 0')
+    const activityPrice = screen.getByText('Price:$ 0')
 
     expect(activityTitle).toBeInTheDocument()
     expect(activityType).toBeInTheDocument()

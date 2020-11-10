@@ -25,11 +25,9 @@ class ActivityForm extends Component {
     const activityType = this.state.type
 
     if(activityType !== '') {
-      console.log(activityType)
       this.props.getActivityType(activityType)
     }
     if(activityParticipants > 0) {
-      console.log(activityParticipants)
       this.props.getActivityParticipants(parseInt(activityParticipants))
     }
     if(!activityType && activityParticipants === 0) {
@@ -41,13 +39,13 @@ class ActivityForm extends Component {
   render() {
     const { participants, type } = this.state;
     return (
-      <form className="activity-search" title="activity-search">
+      <form className="activity-search" title="activity-search" data-testid="activity-search">
         <h2>Need a Distraction From Quarantine and/or The Election?</h2>
         <h2>Find a Random Activity by Number of Participants OR Type</h2>
-        <label htmlFor="particpants" className="particpants-label">
+        <label htmlFor="participants" className="participants-label">
           Participants
         </label>
-        <select id="participants-numbers"
+        <select id="participants"
           name="participants"
           defaultValue={this.state.particpants}
           onChange={event => this.handleChange(event)}>
@@ -83,6 +81,12 @@ class ActivityForm extends Component {
       </form>
     )
   }
-}
+};
+
+ActivityForm.propTypes = {
+  getRandomActivity: PropTypes.func,
+  getActivityParticipants: PropTypes.func,
+  getActivityType: PropTypes.func
+};
 
 export default ActivityForm;
