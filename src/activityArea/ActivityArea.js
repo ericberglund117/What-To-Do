@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const ActivityArea = (props) => {
   const { activities } = props
+  console.log('letter')
   const individualActivity = activities.map((activity, index) => {
     return (
       <Link to={`/activity/${activity.key}`} key={activity.key} title='activity-name'>
@@ -12,7 +13,7 @@ const ActivityArea = (props) => {
       </Link>
     )
   })
-
+  
   return (
     <section className="activity-area">
       <h2 className="activities-list">Activities List</h2>
