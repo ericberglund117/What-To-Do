@@ -13,6 +13,12 @@ const ActivityCard = (props) => {
           <h3>Participants: {activity.participants}</h3>
           <h3>Price:$ {activity.price}</h3>
           <h3>Key: {activity.key}</h3>
+          <button
+            type="button"
+            className="favorite-btn"
+            onClick={event => this.props.favoriteActivity}>
+            Favorite!
+          </button>
         </section>
       )
     }
