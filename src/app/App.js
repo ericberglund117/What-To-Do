@@ -12,6 +12,7 @@ class App extends Component {
     super();
     this.state = {
       activityCards: [],
+      favoriteCards: [],
       error: '',
       isLoaded: false
     }
@@ -35,6 +36,15 @@ class App extends Component {
     .catch(error => this.setState({ error: error.message }))
   }
 
+  favoriteActivity = (key) => {
+    const match = this.state.activityCards.find(activity => activity.key === key)
+    if(match) {
+      this.setState({ favoriteCards: [...this.state.favoriteCards, match] })
+    }
+  }
+
+  // create button to display favoriteCards
+
   render() {
     return (
       <div className='main-body'>
@@ -47,7 +57,7 @@ class App extends Component {
         <section className="act-card-section">
           <Route path ='/activity/:key' render = {({match}) => {
             const { key } = match.params
-            return <ActivityCard cardKey={key} activities={this.state.activityCards} />
+            return <ActivityCard cardKey={key} activities={this.state.activityCards} favoriteActivity={this.favoriteActivity} isFavorited={this.state.isFavorited} />
           }}/>
         </section>
         </Route>

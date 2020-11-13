@@ -16,7 +16,7 @@ const ActivityCard = (props) => {
           <button
             type="button"
             className="favorite-btn"
-            onClick={event => this.props.favoriteActivity}>
+            onClick={() => {props.favoriteActivity(activity.key)}}>
             Favorite!
           </button>
         </section>
