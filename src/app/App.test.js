@@ -1,11 +1,8 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { render, waitFor, screen, dispatchEvent } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import App from './App';
-import ActivityArea from '../activityArea/ActivityArea';
-import ActivityCard from '../activityCard/ActivityCard';
 import { getActivity, getActivityParticipants, getActivityType } from '../apiCalls';
 jest.mock('../apiCalls');
 
@@ -40,9 +37,8 @@ const expectedTypeActivity = [{
   }];
 
 describe('App', () => {
-  it('should be able to display a random activity when a user clicks the Search Activities button with no inputs filled out', async () => {
+  it.only('should be able to display a random activity when a user clicks the Search Activities button with no inputs filled out', async () => {
     getActivity.mockResolvedValueOnce(expectedActivity)
-
     render(
       <MemoryRouter>
         <App />
@@ -54,17 +50,13 @@ describe('App', () => {
 
     const submitButton = screen.getByRole('button', { name: /search activities/i })
     userEvent.click(submitButton)
-    expect(getActivity).toHaveBeenCalledTimes(1);
+
+    expect(getActivity).toHaveBeenCalledTimes(1)
 
     const receivedActivity = await waitFor(() => expectedActivity)
     expect(receivedActivity).toHaveLength(1)
-
-    render(
-      <MemoryRouter>
-        <ActivityArea activities={expectedActivity} />
-      </MemoryRouter>
-    )
-    const activityName = screen.getByText("Text a friend you haven't talked to in a long time");
+    console.log(receivedActivity)
+    const activityName = await waitFor(() => screen.getByText("Text a friend you haven't talked to in a long time").closest('a').toHaveAttribute('href', "/activity/6081071"))
     expect(activityName).toBeInTheDocument();
   });
 
@@ -97,12 +89,7 @@ describe('App', () => {
     const receivedActivity = await waitFor(() => expectedParticipantsActivity)
     expect(receivedActivity).toHaveLength(1)
 
-    render(
-      <MemoryRouter>
-        <ActivityArea activities={expectedParticipantsActivity} />
-      </MemoryRouter>
-    )
-    const activityName = screen.getByText("Play Settlers of Catan");
+    const activityName = await waitFor(() => screen.getByText("Play Settlers of Catan"));
     expect(activityName).toBeInTheDocument();
   });
 
@@ -131,12 +118,7 @@ describe('App', () => {
     const receivedActivity = await waitFor(() => expectedTypeActivity)
     expect(receivedActivity).toHaveLength(1)
 
-    render(
-      <MemoryRouter>
-        <ActivityArea activities={expectedTypeActivity} />
-      </MemoryRouter>
-    )
-    const activityName = screen.getByText("Rent a sumosuit for a dinner party");
+    const activityName = await waitFor(() => screen.getByText("Rent a sumosuit for a dinner party"));
     expect(activityName).toBeInTheDocument();
   });
 
@@ -159,22 +141,12 @@ describe('App', () => {
     const receivedActivity = await waitFor(() => expectedActivity)
     expect(receivedActivity).toHaveLength(1)
 
-    render(
-      <MemoryRouter>
-        <ActivityArea activities={expectedActivity} />
-      </MemoryRouter>
-    )
     const activityName = screen.getAllByRole('heading', { name: /activity\-idea/i })
     expect(activityName[1]).toBeInTheDocument();
     expect(screen.getByText("Text a friend you haven't talked to in a long time").closest('a')).toHaveAttribute('href', "/activity/6081071")
     const link = screen.getByText("Text a friend you haven't talked to in a long time")
     userEvent.click(link)
     const key = "6081071"
-
-    render(
-      <MemoryRouter>
-        <ActivityCard cardKey={key} activities={expectedActivity}/>
-      </MemoryRouter>);
 
     await waitFor(() => screen.getByText('Type: social'))
     await waitFor(() => screen.getByText('Participants: 2'))

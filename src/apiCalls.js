@@ -1,6 +1,6 @@
-export const getActivity = () => {
-  return fetch('http://www.boredapi.com/api/activity/')
-  .then(response => response.json())
+export async function getActivity() {
+  const response = await fetch('http://www.boredapi.com/api/activity/')
+  return await response.json()
 }
 
 export const getActivityParticipants = (participants) => {
