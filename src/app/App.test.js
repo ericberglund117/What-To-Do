@@ -37,7 +37,7 @@ const expectedTypeActivity = [{
   }];
 
 describe('App', () => {
-  it('should be able to display a random activity when a user clicks the Search Activities button with no inputs filled out', async () => {
+  it.only('should be able to display a random activity when a user clicks the Search Activities button with no inputs filled out', async () => {
     getActivity.mockResolvedValueOnce(expectedActivity)
     render(
       <MemoryRouter>

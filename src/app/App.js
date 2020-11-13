@@ -12,7 +12,8 @@ class App extends Component {
     super();
     this.state = {
       activityCards: [],
-      error: ''
+      error: '',
+      isLoaded: false
     }
   }
 
