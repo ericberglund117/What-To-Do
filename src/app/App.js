@@ -47,7 +47,21 @@ class App extends Component {
   }
 
   renderFavActivities = () => {
+    return (
+      <section data_testid="fav-cards">
+        <Route path='/activity/favorited' render={() => <FavActivities favActivites={this.state.favoriteCards} />} />
+      </section>
+    )
+  }
 
+  unfavoriteActivity = (key) => {
+    const match = this.state.favoriteCards.find(activity => activity.key === key)
+    if(match) {
+      this.setState({ isFavorited: false })
+      this.setState({ favoriteCards: this.state.favoriteCards.filter(activity => {
+       return activity !== key
+      })});
+    }
   }
   // create button to display favoriteCards
 
@@ -58,6 +72,12 @@ class App extends Component {
           <Route exact path='/'>
             <Header />
             <ActivityForm getRandomActivity={this.getRandomActivity} getActivityParticipants={this.getActivityByParticipants} getActivityType={this.getActivityByType} />
+            <button
+              type="button"
+              className="favorite-btn"
+              onClick={() => {this.renderFavActivities()}}>
+              Favorite Activities!
+            </button>
             <ActivityArea activities={this.state.activityCards}/>
           </Route>
         <section className="act-card-section">
@@ -65,7 +85,6 @@ class App extends Component {
             const { key } = match.params
             return <ActivityCard cardKey={key} activities={this.state.activityCards} favoriteActivity={this.favoriteActivity} isFavorited={this.state.isFavorited} />
           }}/>
-          <Route path='/activity/favorited' render={() => <FavActivities favActivites={this.state.favoriteCards} />} />
         </section>
         </Route>
       </div>
