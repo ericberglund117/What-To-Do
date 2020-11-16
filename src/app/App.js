@@ -2,8 +2,9 @@ import './App.css';
 import React, { Component } from 'react';
 import Header from '../header/Header';
 import ActivityForm from '../form/Form';
-import ActivityArea from '../activityArea/ActivityArea'
-import ActivityCard from '../activityCard/ActivityCard'
+import ActivityArea from '../activityArea/ActivityArea';
+import ActivityCard from '../activityCard/ActivityCard';
+import FavActivities from '../favActivities/FavActivities';
 import { Route } from 'react-router-dom';
 import { getActivity, getActivityParticipants, getActivityType } from '../apiCalls';
 
@@ -14,7 +15,8 @@ class App extends Component {
       activityCards: [],
       favoriteCards: [],
       error: '',
-      isLoaded: false
+      isLoaded: false,
+      isFavorited: false
     }
   }
 
@@ -39,10 +41,14 @@ class App extends Component {
   favoriteActivity = (key) => {
     const match = this.state.activityCards.find(activity => activity.key === key)
     if(match) {
+      this.setState({ isFavorited: true })
       this.setState({ favoriteCards: [...this.state.favoriteCards, match] })
     }
   }
 
+  renderFavActivities = () => {
+
+  }
   // create button to display favoriteCards
 
   render() {
@@ -59,6 +65,7 @@ class App extends Component {
             const { key } = match.params
             return <ActivityCard cardKey={key} activities={this.state.activityCards} favoriteActivity={this.favoriteActivity} isFavorited={this.state.isFavorited} />
           }}/>
+          <Route path='/activity/favorited' render={() => <FavActivities favActivites={this.state.favoriteCards} />} />
         </section>
         </Route>
       </div>

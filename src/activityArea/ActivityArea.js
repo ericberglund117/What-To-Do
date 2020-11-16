@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 const ActivityArea = (props) => {
   const { activities } = props
-  console.log(activities)
   const individualActivity = activities.map((activity, index) => {
     return (
       <Link to={`/activity/${activity.key}`} key={activity.key} title='activity-name'>
